@@ -2,14 +2,16 @@ export const add=(item) => {
 
     return {
         type:'add',
-        payload: item
+        payload: item,
+        
     }
 
 }
-export const remove =(item) => {
+export const remove =(item,id) => {
     return {
         type:'remove',
-        payload: item
+        payload: item,
+        
     }
 
 }
