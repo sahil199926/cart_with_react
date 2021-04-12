@@ -15,10 +15,3 @@ export const remove =(item,id) => {
     }
 
 }
-export const del =(item)=> {
-    return {
-        type:'delete',
-        payload: item
-    }
-
-}

@@ -1,16 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux';
-function Opencart(props) {
+import Things from '../Things';
+
+function Opencart(prop) {
     return (
-        <div>
-          <span className='badge badge-success'>Total price {props.tp} rs </span>
+        <div className='grid' >
+            {Object.keys(Things).map((key, i) => prop.val(key)>0 ? <div key={i} ><img width='10%' src={Things[key].image} /> {prop.val(key)} no. of {key} cost which will cost you {prop.amount(key)} rs  </div>:<div></div>)}
         </div>
     )
 }
-const mapStateToProps=(state)=>{
 
-    const total_price=Object.values(state).reduce((t,{no_of_items,price})=>t+no_of_items*price,0);
-    return {tp:total_price}
+const mapStateToProps = (state) => {
+
+    return {
+        val: (key) => state[key].no_of_items,
+        amount: (key) => state[key].no_of_items * state[key].price };
 }
-
-export default  connect(mapStateToProps)(Opencart);
+export default connect(mapStateToProps)(Opencart);
